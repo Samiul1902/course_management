@@ -1,0 +1,11 @@
+    <style>
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e7e7e7;
+        }
+    </style>
+    <footer>
+        <p>&copy; 2026 Course Management System. All rights reserved.</p>
+    </footer>
