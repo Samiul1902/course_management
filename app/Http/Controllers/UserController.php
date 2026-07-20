@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function register()
     {
-        return view('pages.login');
+        return "Registration successful!";
     }
 }

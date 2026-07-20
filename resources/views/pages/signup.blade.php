@@ -20,17 +20,28 @@
         <h1>Register</h1>
         <form action="/register" method="POST">
             @csrf
-            <div>
+            <div class="name">
                 <label for="name">Name:<br></label>
                 <input type="text" id="name" name="name" required placeholder="Name">
             </div>
-            <div>
+            <div class="email">
                 <label for="email">Email:<br></label>
                 <input type="email" id="email" name="email" required placeholder="Email">
             </div>
-            <div>
+            <div class="password">
                 <label for="password">Password:<br></label>
                 <input type="password" id="password" name="password" required placeholder="Password">
+            </div>
+            <div class="confirm_password">
+                <label for="confirm_password">Confirm Password:<br></label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm Password">
+            </div>
+            <div class="terms">
+                <input type="checkbox" id="check_box" name="check_box" required>
+                <label for="check_box"> I agree to the terms and conditions:</label>
+            </div>
+            <div class="login_link">
+                <p>Already have an account? <a href="/login">Login here</a></p>
             </div>
             <button type="submit">Register</button>
         </form>
