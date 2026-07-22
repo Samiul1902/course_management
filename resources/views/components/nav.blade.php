@@ -1,9 +1,21 @@
 <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: Arial, sans-serif;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+    }
     .navbar {
         background-color: #1aa6be;
         overflow: hidden;
         margin: 0;
-        padding: 0;
+        padding: 20px;
     }
     ul {
         list-style-type: none;

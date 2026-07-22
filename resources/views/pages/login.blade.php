@@ -3,6 +3,51 @@
 @section('title', 'Login')
 
 @section('content')
+    <style>
+        .main {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .main h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .main form {
+            display: flex;
+            flex-direction: column;
+        }
+        .main form div {
+            margin-bottom: 15px;
+        }
+        .main form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .main form input[type="email"],
+        .main form input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .main form button {
+            padding: 10px;
+            background-color: #1aa6be;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .main form button:hover {
+            background-color: #0d7a8c;
+        }
+        .register_link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        </style>
     <div class="main">
         <h1>Login</h1>
         <form action="/login" method="POST">
@@ -16,7 +61,7 @@
                 <input type="password" id="password" name="password" required placeholder="Password">
             </div>
             <div class="register_link">
-                <p>Don't have an account? <a href="/signup">Register here</a></p>
+                <p>Don't have an account? <a href="/register" style="color: #1aa6be;">Register here</a></p>
             </div>
             <button type="submit">Login</button>
         </form>
