@@ -1,3 +1,20 @@
+<style>
+    .navbar {
+        background-color: #1aa6be;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+</style>
+
 <nav class="navbar">
     <ul>
         <li><a href="{{ url('/') }}">Home</a></li>

@@ -1,21 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+@extends('components.layout')
+
+@section('title', 'Register')
+
+@section('content')
     <style>
         .main {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .main h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .main form {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+        }
+        .main form div {
+            margin-bottom: 15px;
+        }
+        .main form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .main form input[type="text"],
+        .main form input[type="email"],
+        .main form input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .main form button {
+            padding: 10px;
+            background-color: #1aa6be;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .main form button:hover {
+            background-color: #0d7a8c;
         }
     </style>
-</head>
-<body>
     <div class="main">
         <h1>Register</h1>
         <form action="/register" method="POST">
@@ -46,5 +75,4 @@
             <button type="submit">Register</button>
         </form>
     </div>
-</body>
-</html>
+@endsection
