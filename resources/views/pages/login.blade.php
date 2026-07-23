@@ -54,11 +54,17 @@
             @csrf
             <div class="email">
                 <label for="email">Email:<br></label>
-                <input type="email" id="email" name="email" required placeholder="Email">
+                <input type="email" id="email" name="email" required placeholder="Email" value="{{ old('email') }}">
+                @error('email')
+                    <span style="color: red; font-size: 13px; display: block; margin-top: 5px;">{{ $message }}</span>
+                @enderror
             </div>
             <div class="password">
                 <label for="password">Password:<br></label>
                 <input type="password" id="password" name="password" required placeholder="Password">
+                @error('password')
+                    <span style="color: red; font-size: 13px; display: block; margin-top: 5px;">{{ $message }}</span>
+                @enderror
             </div>
             <div class="register_link">
                 <p>Don't have an account? <a href="/register" style="color: #1aa6be;">Register here</a></p>

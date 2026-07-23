@@ -10,35 +10,54 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class UserController extends Controller
 {
-    public function register(Request $request): RedirectResponse
+    public function register(Request $request)
     {
-        // Process the registration logic here
-        $incomingFields = Validator::make($request->all(), [
-            'name' => ['required', 'min:3', 'max: 10'],
+        $incomingFields = $request->validate([
+            'name' => ['required', 'min:3', 'max:10'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:6'],
             'confirm_password' => ['required', 'same:password'],
             'check_box' => ['required', 'accepted'],
-            ]
-        );
-        if ($incomingFields->fails()) {
-            return redirect('/register')->withErrors($incomingFields)->withInput();
-        }
-
-        // Create a new user instance
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
         ]);
 
-        Auth::login($user);
-        return redirect('/login')->with('success', 'Registration successful! Please login.');
+        // Create the user. The password will be automatically hashed by the 'hashed' cast in User model.
+        $user = User::create([
+            'name' => $incomingFields['name'],
+            'email' => $incomingFields['email'],
+            'password' => $incomingFields['password'],
+        ]);
 
+        // Automatically log in the user after registration
+        Auth::login($user);
+
+        return redirect('/login')->with('success', 'Registration successful!');
     }
 
-     public function login(Request $request)
+    public function login(Request $request)
     {
-        return 'Login successful!';
+        $incomingFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt([
+            'email' => $incomingFields['email'],
+            'password' => $incomingFields['password']
+        ])) {
+            $request->session()->regenerate();
+            return redirect('/')->with('success', 'Logged in successfully!');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('success', 'Logged out successfully!');
     }
 }

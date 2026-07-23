@@ -30,8 +30,18 @@
 <nav class="navbar">
     <ul>
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="{{ url('/login') }}">Login</a></li>
-        <li><a href="{{ url('/register') }}">Register</a></li>
+        @auth
+            <li><span style="color: white; font-weight: bold;">Welcome, {{ auth()->user()->name }}</span></li>
+            <li>
+                <form action="{{ url('/logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-size: inherit; font-family: inherit; text-decoration: underline;">Logout</button>
+                </form>
+            </li>
+        @else
+            <li><a href="{{ url('/login') }}">Login</a></li>
+            <li><a href="{{ url('/register') }}">Register</a></li>
+        @endauth
     </ul>
 </nav>
 
